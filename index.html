@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlateOnRepeat - Your Favorite Meals, On Replay</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --highlight-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .search-bar {
+            display: flex;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            padding: 15px 25px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background: #c0392b;
+        }
+        
+        .search-filters {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        /* Recipe Grid */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+        
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .recipe-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .recipe-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .recipe-info {
+            padding: 20px;
+        }
+        
+        .recipe-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .recipe-stats {
+            display: flex;
+            align-items: center;
+        }
+        
+        .recipe-stats span {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .recipe-stats i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        
+        .repeat-btn {
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .repeat-btn i {
+            margin-right: 5px;
+        }
+        
+        .repeat-btn:hover {
+            background: #2980b9;
+        }
+        
+        /* Featured Sections */
+        .featured-section {
+            margin: 60px 0;
+        }
+        
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .view-all {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        /* Cooking Tips */
+        .tips-section {
+            background: var(--light-color);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tip-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tip-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Customer Satisfaction */
+        .satisfaction-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .stat-item {
+            margin: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .testimonials {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .search-bar input, .search-bar button {
+                width: 100%;
+            }
+            
+            .search-bar button {
+                padding: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Plate<span>OnRepeat</span></div>
+                <ul class="nav-links">
+                  <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hit Replay on Your Favorite Meals</h1>
+            <p>Discover recipes so good you'll want to make them again and again</p>
+            <a href="#" class="btn">Explore Recipes</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-container container">
+        <div class="search-bar">
+            <input type="text" placeholder="Search for recipes...">
+            <button><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="search-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Quick Meals</button>
+            <button class="filter-btn">Vegetarian</button>
+            <button class="filter-btn">High Protein</button>
+            <button class="filter-btn">Low Carb</button>
+            <button class="filter-btn">One Pot</button>
+        </div>
+    </div>
+
+    <!-- Popular Recipes -->
+    <div class="container">
+        <h2 class="section-title">Most Replayed This Week</h2>
+        <div class="recipes-grid">
+            <!-- Recipe 1 -->
+            <div class="recipe-card">
+                <img src="r1.jpeg" alt="Garlic Butter Chicken" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Garlic Butter Chicken</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 25 mins</span>
+                        <span><i class="fas fa-utensils"></i> 4 servings</span>
+                    </div>
+                    <p>Creamy garlic butter chicken with spinach - a weeknight favorite that never disappoints.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.2k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 2 -->
+            <div class="recipe-card">
+                <img src="r2.jpeg" alt="Spaghetti Aglio e Olio" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Spaghetti Aglio e Olio</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 15 mins</span>
+                        <span><i class="fas fa-utensils"></i> 2 servings</span>
+                    </div>
+                    <p>Simple garlic and olive oil pasta that's perfect for late-night cravings.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 980 repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 3 -->
+            <div class="recipe-card">
+                <img src="r3.jpeg" alt="Beef Stir Fry" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Beef Stir Fry</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 20 mins</span>
+                        <span><i class="fas fa-utensils"></i> 3 servings</span>
+                    </div>
+                    <p>Quick and flavorful beef stir fry with vegetables - ready in minutes.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 850 repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Repeats Section -->
+    <div class="container">
+        <div class="featured-header">
+            <h2 class="section-title">Quick Repeats</h2>
+            <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="recipes-grid">
+            <!-- Recipe 4 -->
+            <div class="recipe-card">
+                <img src="r4.jpeg" alt="Avocado Toast" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Avocado Toast 3 Ways</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 5 mins</span>
+                        <span><i class="fas fa-utensils"></i> 1 serving</span>
+                    </div>
+                    <p>Three delicious variations of avocado toast to start your day right.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 2.5k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 5 -->
+            <div class="recipe-card">
+                <img src="r5.jpeg" alt="Vegetable Omelet" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">5-Minute Veggie Omelet</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 5 mins</span>
+                        <span><i class="fas fa-utensils"></i> 1 serving</span>
+                    </div>
+                    <p>Fluffy omelet packed with vegetables - perfect for busy mornings.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.8k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 6 -->
+            <div class="recipe-card">
+                <img src="r6.jpeg" alt="Grilled Cheese" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Ultimate Grilled Cheese</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 10 mins</span>
+                        <span><i class="fas fa-utensils"></i> 1 serving</span>
+                    </div>
+                    <p>Crispy, cheesy perfection with three types of cheese and a secret ingredient.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.5k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Staples Section -->
+    <div class="container">
+        <div class="featured-header">
+            <h2 class="section-title">Student Staples</h2>
+            <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="recipes-grid">
+            <!-- Recipe 7 -->
+            <div class="recipe-card">
+                <img src="r7.jpeg" alt="Ramen Upgrade" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Gourmet Instant Ramen</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 7 mins</span>
+                        <span><i class="fas fa-utensils"></i> 1 serving</span>
+                    </div>
+                    <p>Elevate your instant ramen with these simple but game-changing additions.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 3.2k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 8 -->
+            <div class="recipe-card">
+                <img src="r8.jpeg" alt="Microwave Mug Cake" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">5-Minute Mug Cake</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 5 mins</span>
+                        <span><i class="fas fa-utensils"></i> 1 serving</span>
+                    </div>
+                    <p>Single-serving chocolate cake made in a mug - no oven required!</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 2.7k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 9 -->
+            <div class="recipe-card">
+                <img src="r9.webp" alt="Pasta Pesto" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">One-Pot Pasta Pesto</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 15 mins</span>
+                        <span><i class="fas fa-utensils"></i> 2 servings</span>
+                    </div>
+                    <p>Creamy pesto pasta made in one pot - minimal cleanup required.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.9k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meal Prep Section -->
+    <div class="container">
+        <div class="featured-header">
+            <h2 class="section-title">Meal Prep Favorites</h2>
+            <a href="#" class="view-all">View All</a>
+        </div>
+        <div class="recipes-grid">
+            <!-- Recipe 10 -->
+            <div class="recipe-card">
+                <img src="r10.webp" alt="Meal Prep Bowls" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Power Meal Prep Bowls</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 40 mins</span>
+                        <span><i class="fas fa-utensils"></i> 5 servings</span>
+                    </div>
+                    <p>Balanced bowls with quinoa, roasted veggies, and protein - lasts all week.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.4k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 11 -->
+            <div class="recipe-card">
+                <img src="r11.webp" alt="Chicken Meal Prep" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Baked Chicken & Veggies</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 35 mins</span>
+                        <span><i class="fas fa-utensils"></i> 4 servings</span>
+                    </div>
+                    <p>Simple sheet pan meal with perfectly seasoned chicken and vegetables.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 1.6k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recipe 12 -->
+            <div class="recipe-card">
+                <img src="r12.webp" alt="Overnight Oats" class="recipe-img">
+                <div class="recipe-info">
+                    <h3 class="recipe-title">Overnight Oats 5 Ways</h3>
+                    <div class="recipe-meta">
+                        <span><i class="fas fa-clock"></i> 5 mins prep</span>
+                        <span><i class="fas fa-utensils"></i> 5 servings</span>
+                    </div>
+                    <p>Five delicious variations of overnight oats for easy breakfasts all week.</p>
+                    <div class="recipe-stats">
+                        <span><i class="fas fa-repeat"></i> 2.3k repeats</span>
+                        <button class="repeat-btn"><i class="fas fa-plus"></i> Replay List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Cooking Tips Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Cooking Feedback & Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>Perfect Your Timing</h3>
+                    <p>Use a kitchen timer for each component of your meal. Perfectly timed dishes make for better meals and more repeats!</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Taste as You Go</h3>
+                    <p>Season in layers and taste frequently. Small adjustments throughout cooking lead to perfectly balanced flavors.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Master the Basics</h3>
+                    <p>Perfect your knife skills, learn to control heat, and understand seasoning. These fundamentals will improve every dish.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Keep a Cooking Journal</h3>
+                    <p>Note what works and what doesn't. Tracking your adjustments helps you repeat successes and avoid repeating mistakes.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Trust Your Senses</h3>
+                    <p>Recipes are guidelines. Learn to recognize doneness by look, smell, and texture rather than just time.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Quality Ingredients Matter</h3>
+                    <p>Start with the best ingredients you can afford. Better ingredients lead to better results worth repeating.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Satisfaction Section -->
+    <section class="satisfaction-section container">
+        <h2 class="section-title">Why Our Community Keeps Coming Back</h2>
+        <p>Join over 500,000 home cooks who have found their go-to recipes with PlateOnRepeat</p>
+        
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Recipe Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">72%</div>
+                <div class="stat-label">Repeat Visitors</div>
+            </div>
+        </div>
+        
+        <h3>What Our Community Says</h3>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-text">"PlateOnRepeat has changed how I cook. I used to constantly search for new recipes, now I have 10 go-to meals I can make perfectly thanks to this site."</p>
+                <p class="testimonial-author">- Sarah J., 142 recipes repeated</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"As a student, I need meals that are easy, cheap, and tasty enough to eat multiple times a week. This site delivers exactly that."</p>
+                <p class="testimonial-author">- Michael T., 87 recipes repeated</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"The 'most repeated' feature helps me find recipes that are truly worth making again. No more recipe roulette!"</p>
+                <p class="testimonial-author">- Priya K., 203 recipes repeated</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PlateOnRepeat</h3>
+                    <p>Your favorite meals, on replay. Discover recipes so good you'll want to make them again and again.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">All Recipes</a></li>
+                        <li><a href="#">Quick Repeats</a></li>
+                        <li><a href="#">Student Staples</a></li>
+                        <li><a href="#">Meal Prep</a></li>
+                        <li><a href="#">Most Replayed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Recipe Guidelines</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PlateOnRepeat. All rights reserved. "Your Favorite Meals, On Replay" is a trademark of PlateOnRepeat.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

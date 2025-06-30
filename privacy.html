@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PlateOnRepeat</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --highlight-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Privacy Hero */
+        .privacy-hero {
+            background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-bottom: 50px;
+        }
+        
+        .privacy-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .privacy-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        /* Privacy Content */
+        .privacy-content {
+            margin-bottom: 60px;
+        }
+        
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+        
+        .privacy-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 28px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .privacy-section h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        .privacy-point {
+            margin-bottom: 25px;
+        }
+        
+        .privacy-point h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .privacy-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Plate<span>OnRepeat</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Privacy Hero -->
+    <section class="privacy-hero">
+        <div class="privacy-hero-content">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: June 15, 2023</p>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <div class="container">
+        <div class="privacy-content">
+            <div class="privacy-section">
+                <h2>Introduction</h2>
+                <p>At PlateOnRepeat, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. By accessing or using our service, you agree to the collection and use of information in accordance with this policy.</p>
+                
+                <div class="privacy-point">
+                    <h4>1. Information We Collect</h4>
+                    <p>We collect several types of information from and about users of our website, including personal data such as your name, email address, and demographic information. We also automatically collect technical data about your device and browsing actions when you interact with our site. This may include your IP address, browser type, operating system, and other diagnostic data. Additionally, we gather information about your usage patterns and preferences to improve our services.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>2. How We Use Your Information</h4>
+                    <p>The information we collect is used to provide and improve our services, personalize your experience, and communicate with you. We use your data to process transactions, respond to inquiries, and send periodic emails about your account or other products and services. Your information helps us develop new features, conduct research and analysis to better understand our users, and prevent fraudulent activities on our platform.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>3. Data Sharing and Disclosure</h4>
+                    <p>We may share your information with trusted third-party service providers who assist us in operating our website and conducting our business. These parties are contractually obligated to keep your information confidential and use it only for the purposes we specify. We may also disclose your information when required by law or to protect our rights, property, or safety, or that of our users or others. In the event of a business transfer or merger, user information may be among the transferred assets.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>4. Cookies and Tracking Technologies</h4>
+                    <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with small amounts of data that are sent to your browser from a website and stored on your device. These technologies help us enhance user experience, analyze trends, administer the site, and gather demographic information about our user base. You can control the use of cookies at the individual browser level, but disabling them may limit your use of certain features.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>5. Data Security Measures</h4>
+                    <p>We implement appropriate technical and organizational security measures designed to protect your personal data from unauthorized access, alteration, disclosure, or destruction. These include encryption, access controls, secure server infrastructure, and regular security audits. While we strive to protect your personal information, no method of transmission over the Internet or electronic storage is 100% secure, so we cannot guarantee absolute security. We encourage users to take precautions to protect their personal data when online.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>6. User Rights and Choices</h4>
+                    <p>You have certain rights regarding your personal information, including the right to access, correct, or delete your data. You may also object to or restrict certain processing activities and request data portability where applicable. To exercise these rights, please contact us using the information provided below. You can opt out of receiving marketing communications from us by following the unsubscribe link in any email we send or by contacting us directly.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>7. Children's Privacy</h4>
+                    <p>Our service is not intended for children under the age of 13, and we do not knowingly collect personal information from children under 13. If we become aware that we have collected personal data from a child without parental consent, we will take steps to remove that information from our servers. Parents or guardians who believe their child has provided us with personal information should contact us immediately to have the data removed.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>8. International Data Transfers</h4>
+                    <p>Your information, including personal data, may be transferred to and maintained on computers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ. If you are located outside the United States and choose to provide information to us, please note that we transfer the data to the United States and process it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>9. Third-Party Links</h4>
+                    <p>Our website may contain links to third-party websites that are not operated by us. We strongly advise you to review the privacy policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. These links are provided for your convenience only, and their inclusion does not imply endorsement of the linked site or any association with its operators.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>10. Data Retention Periods</h4>
+                    <p>We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies. The criteria used to determine retention periods include the nature of the data, the purposes for processing, and legal or regulatory requirements. When no longer needed, we will securely delete or anonymize your personal data.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>11. Account Registration Information</h4>
+                    <p>When you create an account with PlateOnRepeat, we collect your name, email address, and password. This information is used to authenticate your identity, provide access to your account, and communicate important service-related notices. You may also choose to provide additional profile information such as dietary preferences, cooking skill level, and favorite cuisines to enhance your experience. Account information is protected by security measures and should be kept confidential by users.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>12. Payment Processing Data</h4>
+                    <p>For premium services or purchases made through our platform, we collect payment information such as credit card details or other financial account information. This sensitive data is processed through secure third-party payment processors and is not stored on our servers. We only retain minimal transaction details necessary for order fulfillment, customer service, and financial record-keeping. All payment transactions are encrypted using SSL technology and comply with PCI-DSS standards.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>13. Recipe Interaction Data</h4>
+                    <p>We collect information about how you interact with recipes on our platform, including views, saves, ratings, and comments. This data helps us understand user preferences, improve our content recommendations, and enhance the overall user experience. Your recipe interactions may be visible to other users depending on your privacy settings. We may use this aggregated data to identify popular recipes and trends without identifying individual users.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>14. Newsletter and Marketing Communications</h4>
+                    <p>When you subscribe to our newsletter or marketing communications, we collect your email address and may track your engagement with these messages. You can manage your subscription preferences or opt out at any time using the unsubscribe link in each email or through your account settings. We may personalize marketing content based on your interactions with our platform, but we do not sell your contact information to third parties for their marketing purposes.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>15. Social Media Integration</h4>
+                    <p>If you choose to connect your social media accounts to our service, we may collect certain information from those platforms as permitted by your privacy settings. This may include your profile information, friend lists, and other data you've made publicly available. Social media features on our site may collect your IP address and set cookies to enable proper functionality. Your interactions with these features are governed by the privacy policy of the company providing them.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>16. User-Generated Content</h4>
+                    <p>When you submit recipes, reviews, comments, or other content to our platform, we collect and store this information. User-generated content may be publicly visible and could include personal information you choose to disclose. We reserve the right to moderate, edit, or remove content that violates our terms of service. By submitting content, you grant us a license to use, display, and distribute it in connection with our services.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>17. Customer Support Interactions</h4>
+                    <p>When you contact our customer support team, we collect information about your inquiry and may retain communications to improve our services and assist with future requests. This may include your contact information, details about your issue, and any troubleshooting steps taken. We use this information to respond to your inquiry, analyze common service issues, and train our support staff. Sensitive information provided during support interactions is protected accordingly.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>18. Surveys and Research</h4>
+                    <p>Occasionally, we may invite you to participate in surveys, contests, or research studies to help improve our services. Participation is voluntary, and we will inform you what data we collect and how it will be used. Survey responses may be combined with other account information to better understand user needs and preferences. Research data is typically aggregated and anonymized for analysis and reporting purposes.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>19. Automated Decision Making</h4>
+                    <p>We may use algorithms and automated processes to personalize your experience, recommend content, or detect suspicious activity. These systems analyze your behavior patterns, preferences, and other data points to make predictions or decisions. You may have the right to request human intervention or challenge automated decisions that significantly affect you, subject to applicable laws. We regularly review our automated systems to ensure fairness and accuracy.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>20. Business Analytics</h4>
+                    <p>We use collected data for business analytics purposes to understand usage patterns, measure service performance, and make informed decisions about product development. This may involve aggregating and analyzing user behavior data to identify trends, optimize features, and evaluate business metrics. Analytics help us improve service reliability, content relevance, and overall user satisfaction while maintaining individual privacy.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>21. Legal Compliance and Law Enforcement</h4>
+                    <p>We may disclose your information when required by law, subpoena, or other legal process, or if we believe in good faith that such action is necessary to comply with legal obligations, protect our rights or property, or ensure the safety of our users or the public. In such cases, we will disclose only the information specifically requested and will take reasonable steps to verify the legitimacy of the request before responding.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>22. Service Providers and Partners</h4>
+                    <p>We engage certain trusted third parties to perform functions and provide services to us, including hosting, analytics, customer support, and marketing. These service providers have access to personal information needed to perform their functions but are contractually prohibited from using it for other purposes. We carefully vet our partners and require them to maintain appropriate security measures to protect your data.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>23. Data Breach Notification</h4>
+                    <p>In the event of a data breach that compromises your personal information, we will promptly investigate the incident and take appropriate remedial measures. If we determine that the breach poses a risk to your rights and freedoms, we will notify you and relevant authorities as required by applicable laws. Notifications will include information about the nature of the breach, the data affected, and recommended protective actions.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>24. Changes to This Privacy Policy</h4>
+                    <p>We may update our Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the new policy on this page and updating the "Last Updated" date. Your continued use of our services after such modifications constitutes acknowledgment of the modified policy and consent to abide by it. We encourage you to periodically review this page for the latest information.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>25. California Privacy Rights</h4>
+                    <p>California residents have specific rights under the California Consumer Privacy Act (CCPA), including the right to request disclosure of data collection practices, access to personal information collected, deletion of personal information, and opt-out of the sale of personal information. We do not sell personal information as defined by CCPA. California residents may exercise these rights by contacting us through the methods provided in this policy.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>26. GDPR Compliance for EU Users</h4>
+                    <p>For users in the European Union, we comply with the General Data Protection Regulation (GDPR). This includes providing transparency about data processing, implementing appropriate security measures, and respecting user rights such as access, rectification, erasure, and data portability. Our legal basis for processing typically includes contract performance, legitimate interests, or user consent. EU users may contact our Data Protection Officer with any concerns.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>27. Data Minimization Principle</h4>
+                    <p>We adhere to the principle of data minimization, collecting only the personal information that is necessary for the purposes for which it is being processed. We regularly review our data collection practices to ensure we are not gathering excessive or irrelevant information. When possible, we use anonymized or pseudonymized data for analysis and testing purposes to reduce privacy risks.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>28. User Consent Management</h4>
+                    <p>Where required by law, we obtain explicit consent before collecting or processing certain types of personal data. You may withdraw consent at any time, though this will not affect the lawfulness of processing based on consent before its withdrawal. We maintain records of consent where applicable and provide clear information about the purposes of data collection at the point of consent.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>29. Data Accuracy</h4>
+                    <p>We take reasonable steps to ensure that personal data we collect is accurate, complete, and current for the purposes for which it is used. Users are responsible for maintaining the accuracy of their account information and may update their details at any time through account settings. We provide mechanisms for users to correct inaccuracies in their personal information upon request.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>30. Data Protection Officer</h4>
+                    <p>We have appointed a Data Protection Officer (DPO) to oversee compliance with data protection laws and address privacy-related concerns. The DPO monitors our adherence to GDPR and other applicable regulations, provides guidance on data protection impact assessments, and serves as a point of contact for data subjects and supervisory authorities. Contact information for our DPO is provided in the "Contact Us" section below.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>31. Data Processing Agreements</h4>
+                    <p>When we engage third-party processors to handle personal data on our behalf, we enter into formal data processing agreements that outline their obligations regarding data security, confidentiality, and compliance with applicable laws. These agreements require processors to implement appropriate technical and organizational measures and prohibit them from using the data for any purpose other than providing the contracted services.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>32. Privacy by Design</h4>
+                    <p>We implement privacy by design and by default principles in our systems and processes. This means we consider privacy at the initial design stage and throughout the complete development process of new products or features. We minimize data collection, implement strong security protections, and provide privacy-friendly default settings. Regular privacy impact assessments help identify and mitigate potential risks to user data.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>33. Cross-Device Tracking</h4>
+                    <p>We may use technologies that allow us to recognize your devices and deliver a consistent experience across multiple devices. This helps us understand how users interact with our services on different platforms and optimize our content accordingly. You may have options to control cross-device tracking through your account settings or device-level preferences, depending on your jurisdiction.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>34. Location Data</h4>
+                    <p>With your permission, we may collect and process information about your approximate or precise location to provide location-based services, such as showing recipes popular in your region or displaying content in your local language. Location data may be derived from your IP address or mobile device GPS. You can enable or disable location services at any time through your device settings.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>35. Data Subject Rights Procedure</h4>
+                    <p>We have established procedures to handle requests from individuals exercising their data protection rights. These procedures ensure we verify the identity of requestors, respond within statutory timeframes, and provide information in a commonly used electronic format when requested. There is generally no charge for exercising these rights, though we may charge a reasonable fee for manifestly unfounded or excessive requests.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>36. Data Protection Impact Assessments</h4>
+                    <p>For high-risk processing activities, we conduct Data Protection Impact Assessments (DPIAs) to systematically analyze and minimize data protection risks. These assessments evaluate the necessity and proportionality of processing, risks to individuals, and measures to address those risks. DPIAs are conducted when introducing new technologies or processing methods that are likely to result in high risk to individuals' rights and freedoms.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>37. Employee Training and Awareness</h4>
+                    <p>We provide regular privacy and security training to all employees who handle personal data, emphasizing the importance of protecting user information and complying with applicable laws. Training covers secure data handling practices, recognizing and reporting data breaches, and understanding individual responsibilities under our privacy program. Employees are required to acknowledge and adhere to our data protection policies.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>38. Record Keeping</h4>
+                    <p>We maintain records of processing activities as required by applicable data protection laws. These records include purposes of processing, categories of data subjects and personal data, recipients of personal data, international transfers, retention periods, and security measures. Records help demonstrate our compliance with legal obligations and facilitate cooperation with supervisory authorities when required.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>39. Vendor Management</h4>
+                    <p>We conduct due diligence on third-party vendors who process personal data on our behalf, assessing their security practices and compliance with data protection requirements. Vendor relationships are governed by contracts that specify data protection obligations, audit rights, and liability provisions. We monitor vendor performance and periodically reassess their compliance with our standards and applicable laws.</p>
+                </div>
+                
+                <div class="privacy-point">
+                    <h4>40. Privacy Notices</h4>
+                    <p>In addition to this comprehensive Privacy Policy, we provide just-in-time notices at points of data collection to inform users about how their information will be used in specific contexts. These layered notices highlight key privacy information when it is most relevant to users' decisions. We design our notices to be clear, concise, and easily accessible to promote transparency and informed consent.</p>
+                </div>
+                
+                <h3>Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
+                <p><strong>Email:</strong> privacy@plateonrepeat.com</p>
+                <p><strong>Mail:</strong> Privacy Officer, PlateOnRepeat Inc., 123 Culinary Way, Suite 200, San Francisco, CA 94107</p>
+                <p>For EU-specific inquiries, you may contact our Data Protection Officer at dpo@plateonrepeat.com.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PlateOnRepeat</h3>
+                    <p>Your favorite meals, on replay. Discover recipes so good you'll want to make them again and again.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Culinary Way, San Francisco, CA 94107</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@plateonrepeat.com</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">All Recipes</a></li>
+                        <li><a href="#">Quick Repeats</a></li>
+                        <li><a href="#">Student Staples</a></li>
+                        <li><a href="#">Meal Prep</a></li>
+                        <li><a href="#">Most Replayed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Recipe Guidelines</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PlateOnRepeat. All rights reserved. "Your Favorite Meals, On Replay" is a trademark of PlateOnRepeat.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

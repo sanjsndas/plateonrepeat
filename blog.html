@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlateOnRepeat Blog - Cooking Tips, Recipes & More</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --highlight-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Blog Hero */
+        .blog-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .blog-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .blog-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        /* Blog Layout */
+        .blog-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            margin-bottom: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .featured-post-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .featured-post-content {
+            padding: 30px;
+            background: white;
+        }
+        
+        .post-meta {
+            display: flex;
+            margin-bottom: 15px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .post-meta span {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-meta i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        
+        .featured-post h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .featured-post p {
+            margin-bottom: 20px;
+        }
+        
+        /* Regular Posts */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .post-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .post-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .post-content {
+            padding: 20px;
+        }
+        
+        .post-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .read-more {
+            color: var(--accent-color);
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .popular-posts {
+            list-style: none;
+        }
+        
+        .popular-post {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .popular-post-img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .popular-post-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .popular-post-date {
+            font-size: 12px;
+            color: #777;
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .categories-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+        
+        .categories-list a:hover {
+            color: var(--accent-color);
+        }
+        
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: var(--light-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Newsletter */
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #c0392b;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .page-numbers {
+            display: flex;
+            list-style: none;
+        }
+        
+        .page-numbers li {
+            margin: 0 5px;
+        }
+        
+        .page-numbers a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        .page-numbers a:hover, .page-numbers a.active {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-hero h1 {
+                font-size: 36px;
+            }
+            
+            .blog-hero p {
+                font-size: 16px;
+            }
+            
+            .featured-post-img {
+                height: 300px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Plate<span>OnRepeat</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="blog-hero-content container">
+            <h1>The PlateOnRepeat Blog</h1>
+            <p>Cooking tips, kitchen hacks, and stories about the recipes worth making again and again</p>
+            <a href="#featured" class="btn">Read Featured Post</a>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <div class="blog-container">
+            <!-- Main Content -->
+            <main>
+                <!-- Featured Post -->
+                <article class="featured-post" id="featured">
+                    <img src="b1.avif" alt="Featured Post" class="featured-post-img">
+                    <div class="featured-post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 15, 2023</span>
+                            <span><i class="far fa-user"></i> By Chef Michael</span>
+                            <span><i class="far fa-comment"></i> 24 Comments</span>
+                        </div>
+                        <h2>How to Master the Art of Recipe Repetition</h2>
+                        <p>Repeating recipes isn't just about convenience - it's about mastery. When you make a dish multiple times, you develop an intuitive understanding of its components, allowing you to adjust and improve with each iteration. This guide will help you transform recipe repetition from a chore into a rewarding culinary practice.</p>
+                        <p>We'll explore techniques for tracking your adjustments, recognizing subtle improvements, and knowing when a recipe has reached its peak potential. You'll learn how to create your own personal "greatest hits" collection of go-to meals that you can prepare perfectly every time.</p>
+                        <a href="#" class="btn">Continue Reading</a>
+                    </div>
+                </article>
+
+                <!-- Blog Posts Grid -->
+                <div class="blog-posts">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <img src="b2.avif" alt="Post 1" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 10, 2023</span>
+                                <span><i class="far fa-comment"></i> 8</span>
+                            </div>
+                            <h3>5 Student Meals Worth Making Weekly</h3>
+                            <p>Discover budget-friendly, easy-to-make meals that are nutritious enough to eat multiple times a week without getting bored.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <img src="b3.avif" alt="Post 2" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> June 5, 2023</span>
+                                <span><i class="far fa-comment"></i> 14</span>
+                            </div>
+                            <h3>The Science Behind Why We Crave Familiar Foods</h3>
+                            <p>Explore the psychological and physiological reasons why we often prefer meals we've eaten before over new culinary experiences.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <img src="b4.avif" alt="Post 3" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 28, 2023</span>
+                                <span><i class="far fa-comment"></i> 5</span>
+                            </div>
+                            <h3>Meal Prep: How to Cook Once, Eat All Week</h3>
+                            <p>Learn the secrets to preparing meals that actually taste good after several days in the fridge and reheat beautifully.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="post-card">
+                        <img src="b5.avif" alt="Post 4" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 20, 2023</span>
+                                <span><i class="far fa-comment"></i> 11</span>
+                            </div>
+                            <h3>Small Tweaks That Transform Good Recipes Into Great Ones</h3>
+                            <p>Discover how minor adjustments in technique or ingredients can elevate your favorite recipes to new heights.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="post-card">
+                        <img src="b6.avif" alt="Post 5" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 15, 2023</span>
+                                <span><i class="far fa-comment"></i> 7</span>
+                            </div>
+                            <h3>Building Your Personal Recipe Rotation</h3>
+                            <p>How to curate a collection of 10-15 go-to recipes that cover all your nutritional needs and taste preferences.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="post-card">
+                        <img src="b7.avif" alt="Post 6" class="post-img">
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i> May 8, 2023</span>
+                                <span><i class="far fa-comment"></i> 9</span>
+                            </div>
+                            <h3>The Psychology of Comfort Food: Why We Return to Certain Dishes</h3>
+                            <p>Explore the emotional connections we form with certain foods and why these dishes become our personal classics.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul class="page-numbers">
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- About Widget -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">About The Blog</h3>
+                    <p>The PlateOnRepeat blog is where we explore the art and science of cooking meals worth making again and again. From kitchen hacks to recipe deep dives, we help you build your personal collection of go-to dishes.</p>
+                </div>
+
+                <!-- Popular Posts -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Popular Posts</h3>
+                    <ul class="popular-posts">
+                        <li class="popular-post">
+                            <img src="b7.avif" alt="Popular Post 1" class="popular-post-img">
+                            <div>
+                                <h4 class="popular-post-title">10 Recipes That Improve With Repetition</h4>
+                                <span class="popular-post-date">May 1, 2023</span>
+                            </div>
+                        </li>
+                        <li class="popular-post">
+                            <img src="b2.avif" alt="Popular Post 2" class="popular-post-img">
+                            <div>
+                                <h4 class="popular-post-title">How to Modify Recipes Without Ruining Them</h4>
+                                <span class="popular-post-date">April 25, 2023</span>
+                            </div>
+                        </li>
+                        <li class="popular-post">
+                            <img src="b4.avif" alt="Popular Post 3" class="popular-post-img">
+                            <div>
+                                <h4 class="popular-post-title">The Ultimate Guide to Freezer Meals</h4>
+                                <span class="popular-post-date">April 18, 2023</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Cooking Techniques <span>(24)</span></a></li>
+                        <li><a href="#">Kitchen Hacks <span>(18)</span></a></li>
+                        <li><a href="#">Meal Planning <span>(15)</span></a></li>
+                        <li><a href="#">Recipe Development <span>(12)</span></a></li>
+                        <li><a href="#">Student Cooking <span>(22)</span></a></li>
+                        <li><a href="#">Community Stories <span>(9)</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Tags -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Tags</h3>
+                    <div class="tags-container">
+                        <a href="#" class="tag">Quick Meals</a>
+                        <a href="#" class="tag">Budget</a>
+                        <a href="#" class="tag">Meal Prep</a>
+                        <a href="#" class="tag">Vegetarian</a>
+                        <a href="#" class="tag">One Pot</a>
+                        <a href="#" class="tag">Freezer</a>
+                        <a href="#" class="tag">Batch Cooking</a>
+                        <a href="#" class="tag">Comfort Food</a>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Newsletter</h3>
+                    <p>Get weekly cooking tips and our most repeated recipes straight to your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="text" placeholder="Your Name">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PlateOnRepeat</h3>
+                    <p>Your favorite meals, on replay. Discover recipes so good you'll want to make them again and again.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">All Recipes</a></li>
+                        <li><a href="#">Quick Repeats</a></li>
+                        <li><a href="#">Student Staples</a></li>
+                        <li><a href="#">Meal Prep</a></li>
+                        <li><a href="#">Most Replayed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Recipe Guidelines</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PlateOnRepeat. All rights reserved. "Your Favorite Meals, On Replay" is a trademark of PlateOnRepeat.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

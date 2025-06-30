@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - PlateOnRepeat</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --highlight-color: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Terms Hero */
+        .terms-hero {
+            background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-bottom: 50px;
+        }
+        
+        .terms-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .terms-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        /* Terms Content */
+        .terms-content {
+            margin-bottom: 60px;
+        }
+        
+        .terms-section {
+            margin-bottom: 40px;
+        }
+        
+        .terms-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 28px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .terms-section h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        .terms-point {
+            margin-bottom: 25px;
+        }
+        
+        .terms-point h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .terms-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Plate<span>OnRepeat</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Terms Hero -->
+    <section class="terms-hero">
+        <div class="terms-hero-content">
+            <h1>Terms of Service</h1>
+            <p>Last Updated: June 15, 2023</p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <div class="container">
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2>Introduction</h2>
+                <p>Welcome to PlateOnRepeat! These Terms of Service ("Terms") govern your access to and use of our website, services, and applications (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, please do not use our Service. These Terms apply to all visitors, users, and others who access the Service.</p>
+                
+                <div class="terms-point">
+                    <h4>1. Acceptance of Terms</h4>
+                    <p>By accessing or using PlateOnRepeat, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are using the Service on behalf of an organization, you are agreeing to these Terms for that organization and representing that you have authority to bind that organization to these Terms. We may modify these Terms at any time, and such modifications shall be effective immediately upon posting. Your continued use of the Service after modifications constitutes your acceptance of the modified Terms.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>2. Description of Service</h4>
+                    <p>PlateOnRepeat provides an online platform for discovering, saving, and sharing recipes. Our Service includes recipe recommendations, meal planning tools, and community features. We reserve the right to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. You agree that PlateOnRepeat shall not be liable to you or any third party for any modification, suspension, or discontinuance of the Service. The Service is subject to limitations, delays, and other problems inherent in the use of the internet and electronic communications.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>3. User Accounts</h4>
+                    <p>To access certain features of the Service, you may be required to create an account. You agree to provide accurate, current, and complete information during registration and to update such information to keep it accurate. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account. PlateOnRepeat reserves the right to refuse service, terminate accounts, or remove content at our sole discretion.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>4. User Responsibilities</h4>
+                    <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree not to use the Service to post or transmit any unlawful, threatening, abusive, libelous, defamatory, obscene, or otherwise objectionable material. You are solely responsible for all content you submit to the Service. You warrant that you own or have the necessary rights to any content you submit and that such content does not violate any third-party rights or applicable laws.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>5. Content Ownership</h4>
+                    <p>All recipes, images, text, and other content submitted by users remain the property of their respective owners. By submitting content to PlateOnRepeat, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, distribute, and display such content in connection with the Service. PlateOnRepeat retains all rights, title, and interest in and to the Service and all related intellectual property rights. You may not modify, reproduce, distribute, or create derivative works based on our Service without our express written permission.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>6. Prohibited Conduct</h4>
+                    <p>You agree not to engage in any of the following prohibited activities: (a) copying, distributing, or disclosing any part of the Service in any medium; (b) using automated systems to access the Service; (c) transmitting spam or other unsolicited communications; (d) attempting to interfere with or compromise system integrity or security; (e) collecting user information without consent; (f) impersonating another person or entity; (g) interfering with the proper working of the Service; or (h) accessing content through unauthorized means.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>7. Third-Party Links</h4>
+                    <p>The Service may contain links to third-party websites or services that are not owned or controlled by PlateOnRepeat. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services. You acknowledge and agree that PlateOnRepeat shall not be responsible or liable for any damage or loss caused by your use of any third-party services. We strongly advise you to read the terms and conditions and privacy policies of any third-party sites you visit.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>8. Termination</h4>
+                    <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms. Upon termination, your right to use the Service will immediately cease. All provisions of these Terms which by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, indemnity, and limitations of liability. You may terminate your account at any time by contacting us or through your account settings.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>9. Disclaimer of Warranties</h4>
+                    <p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. PlateOnRepeat disclaims all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be uninterrupted, secure, or error-free, that defects will be corrected, or that the Service is free of viruses or other harmful components.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>10. Limitation of Liability</h4>
+                    <p>In no event shall PlateOnRepeat, its directors, employees, partners, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your access to or use of the Service. Our total liability for any claims under these Terms shall not exceed the amount you paid us, if any, in the past six months for services giving rise to the claim. Some jurisdictions do not allow the exclusion or limitation of liability, so these limitations may not apply to you.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>11. Indemnification</h4>
+                    <p>You agree to defend, indemnify, and hold harmless PlateOnRepeat and its affiliates, officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising out of or in any way connected with your access to or use of the Service, your violation of these Terms, or your infringement of any intellectual property or other rights of any person or entity. We reserve the right to assume the exclusive defense and control of any matter subject to indemnification by you.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>12. Governing Law</h4>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the state and federal courts located in San Francisco County, California. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>13. Dispute Resolution</h4>
+                    <p>Before filing any claim against PlateOnRepeat, you agree to attempt to resolve the dispute informally by contacting us at legal@plateonrepeat.com. If we cannot resolve the dispute within 60 days, you agree to resolve any claims through binding arbitration rather than in court, except for small claims court claims. Arbitration will be conducted by the American Arbitration Association under its Commercial Arbitration Rules. The arbitration shall take place in San Francisco, California.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>14. Class Action Waiver</h4>
+                    <p>You agree that any arbitration or proceeding shall be limited to the dispute between us individually. There shall be no right or authority for any claims to be arbitrated or litigated on a class action basis or through any form of representative action. The arbitrator may not consolidate more than one person's claims and may not otherwise preside over any form of representative or class proceeding. This waiver applies to class arbitration, and unless we agree otherwise, the arbitrator may not consolidate more than one person's claims.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>15. Changes to Terms</h4>
+                    <p>We reserve the right to modify or replace these Terms at any time at our sole discretion. If we make material changes, we will provide notice through our Service or by other means to give you the opportunity to review the changes before they become effective. Your continued use of the Service after any changes constitutes your acceptance of the new Terms. If you do not agree to the new Terms, you must stop using the Service.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>16. Entire Agreement</h4>
+                    <p>These Terms constitute the entire agreement between you and PlateOnRepeat regarding the Service and supersede all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, regarding the Service. If any provision of these Terms is held to be invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect. Our failure to enforce any right or provision will not be considered a waiver of those rights.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>17. Assignment</h4>
+                    <p>You may not assign or transfer these Terms, by operation of law or otherwise, without PlateOnRepeat's prior written consent. Any attempt by you to assign or transfer these Terms without such consent will be null and void. PlateOnRepeat may freely assign or transfer these Terms without restriction. Subject to the foregoing, these Terms will bind and inure to the benefit of the parties, their successors, and permitted assigns. Any purported assignment in violation of this section shall be void.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>18. No Third-Party Beneficiaries</h4>
+                    <p>These Terms do not and are not intended to confer any rights or remedies upon any person other than you and PlateOnRepeat. There are no third-party beneficiaries to these Terms. Your rights under these Terms are personal to you, and you may not transfer or assign them to any third party. No agency, partnership, joint venture, employee-employer, or franchisor-franchisee relationship is intended or created by these Terms between you and PlateOnRepeat.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>19. Force Majeure</h4>
+                    <p>PlateOnRepeat shall not be liable for any failure or delay in performance due in whole or in part to any cause beyond our reasonable control, including but not limited to acts of God, acts of government, floods, fires, earthquakes, civil unrest, acts of terror, strikes or other labor problems, internet service provider failures or delays, or denial of service attacks. In the event of any such delay, our time for performance shall be extended for a period equal to the time lost by reason of the delay.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>20. Notices</h4>
+                    <p>All notices required or permitted under these Terms shall be in writing and shall be deemed given when delivered personally, sent by confirmed email, or mailed by registered or certified mail (return receipt requested) to the address of the party to be notified as set forth in these Terms or such other address as such party may designate by notice. Notices to PlateOnRepeat shall be sent to legal@plateonrepeat.com or to our corporate address with attention to Legal Department.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>21. Recipe Disclaimer</h4>
+                    <p>The recipes and cooking advice provided on PlateOnRepeat are for informational purposes only. We are not responsible for any adverse effects or consequences resulting from the use of recipes or advice on our Service. You assume full responsibility for understanding proper food handling and preparation techniques. Always check for food allergies and consult with a medical professional if you have any health concerns. Cooking times and results may vary depending on individual circumstances.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>22. Premium Services</h4>
+                    <p>Certain features of the Service may require payment of fees ("Premium Services"). By selecting Premium Services, you agree to pay PlateOnRepeat the applicable fees. All fees are non-refundable except as required by law. We may change the fees for Premium Services at any time by posting new fees on our website. Your continued use of Premium Services after fee changes constitutes your agreement to pay the modified amount. Premium Services may automatically renew unless canceled before the renewal date.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>23. User Feedback</h4>
+                    <p>Any feedback, comments, or suggestions you may provide regarding PlateOnRepeat is entirely voluntary, and we will be free to use such feedback without any obligation to you. By submitting feedback, you grant us a perpetual, irrevocable, worldwide license to use, reproduce, modify, adapt, publish, distribute, and otherwise exploit such feedback for any purpose without compensation to you. We appreciate all feedback but are under no obligation to respond to or implement any suggestions.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>24. Community Guidelines</h4>
+                    <p>When participating in PlateOnRepeat's community features, you agree to follow our Community Guidelines, which prohibit harassment, hate speech, spam, and other disruptive behaviors. We reserve the right to remove any content that violates these guidelines and to suspend or terminate accounts of repeat violators. You are solely responsible for your interactions with other users. PlateOnRepeat is not responsible for the conduct of any user on or off the Service.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>25. Digital Millennium Copyright Act</h4>
+                    <p>PlateOnRepeat respects intellectual property rights and complies with the Digital Millennium Copyright Act (DMCA). If you believe your copyright has been infringed, please send a notice to our Copyright Agent containing: (a) identification of the copyrighted work; (b) identification of the infringing material; (c) your contact information; (d) a statement of good faith belief; (e) a statement of accuracy under penalty of perjury; and (f) your signature. Send notices to copyright@plateonrepeat.com.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>26. Age Restrictions</h4>
+                    <p>The Service is not intended for children under 13 years of age. By using the Service, you represent that you are at least 13 years old. If you are between 13 and 18 years old, you may only use the Service with permission from a parent or guardian who agrees to be bound by these Terms. Parents or guardians are responsible for monitoring their children's use of the Service. We do not knowingly collect personal information from children under 13.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>27. Export Control</h4>
+                    <p>You agree to comply with all applicable export and re-export control laws and regulations, including the Export Administration Regulations maintained by the U.S. Department of Commerce and trade and economic sanctions maintained by the U.S. Treasury Department's Office of Foreign Assets Control. You represent that you are not located in a country that is subject to U.S. government embargo or designated as a "terrorist supporting" country, and that you are not listed on any U.S. government list of prohibited or restricted parties.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>28. California Users</h4>
+                    <p>California residents may contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 North Market Blvd., Sacramento, CA 95834, or by telephone at (800) 952-5210. Under California Civil Code Section 1789.3, California users are entitled to the following specific consumer rights notice: The Complaint Assistance Unit may be contacted in writing at the address above or by telephone at the number above.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>29. European Union Users</h4>
+                    <p>If you are located in the European Union, you have certain rights under the General Data Protection Regulation (GDPR), including the right to access, correct, or delete your personal data. You may also have the right to restrict or object to certain processing activities and to receive your data in a portable format. For more information about how we process personal data and your rights under GDPR, please see our Privacy Policy. Our Data Protection Officer can be contacted at dpo@plateonrepeat.com.</p>
+                </div>
+                
+                <div class="terms-point">
+                    <h4>30. Severability</h4>
+                    <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect and enforceable. The unenforceability of any provision in a particular jurisdiction shall not affect the enforceability of that provision in other jurisdictions or of any other provision of these Terms. The parties agree to replace any invalid provision with a valid provision that most closely approximates the intent and economic effect of the invalid provision.</p>
+                </div>
+                
+                <h3>Contact Us</h3>
+                <p>If you have any questions about these Terms, please contact us at:</p>
+                <p><strong>Email:</strong> legal@plateonrepeat.com</p>
+                <p><strong>Mail:</strong> Legal Department, PlateOnRepeat Inc., 123 Culinary Way, Suite 200, San Francisco, CA 94107</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PlateOnRepeat</h3>
+                    <p>Your favorite meals, on replay. Discover recipes so good you'll want to make them again and again.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Culinary Way, San Francisco, CA 94107</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@plateonrepeat.com</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">All Recipes</a></li>
+                        <li><a href="#">Quick Repeats</a></li>
+                        <li><a href="#">Student Staples</a></li>
+                        <li><a href="#">Meal Prep</a></li>
+                        <li><a href="#">Most Replayed</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Recipe Guidelines</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PlateOnRepeat. All rights reserved. "Your Favorite Meals, On Replay" is a trademark of PlateOnRepeat.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
